@@ -4,7 +4,7 @@
   "navigation": [
     {
       "group": "Nemesis",
-      "pages": ["nemesis-core.md"]
+      "pages": ["nemesis-core"]
     },
     {
       "group": "Order",
