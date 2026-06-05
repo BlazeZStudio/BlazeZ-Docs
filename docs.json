@@ -1,0 +1,14 @@
+{
+  "name": "My Plugins",
+  "theme": "mint",
+  "navigation": [
+    {
+      "group": "Nemesis",
+      "pages": ["nemesis"]
+    },
+    {
+      "group": "Order",
+      "pages": ["order"]
+    }
+  ]
+}
