@@ -1,6 +1,9 @@
 {
   "name": "My Plugins",
   "theme": "mint",
+  "colors": {
+    "primary": "#16a34a"
+  },
   "navigation": [
     {
       "group": "Nemesis",
