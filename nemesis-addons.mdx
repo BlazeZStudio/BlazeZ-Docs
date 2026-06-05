@@ -1,0 +1,80 @@
+# Nemesis-Addons
+
+The companion suite to [Nemesis](../../../../nemesis-main): a collection of
+security, anti-lag and staff-tooling **modules** that share one plugin. Every
+module is toggled in this `config.yml` under `modules:` and (where it has one)
+configured from its own folder under `modules/<name>/`. Player activity logs
+(chat, commands, shop, login) are persisted through HikariCP + H2.
+
+## Root command
+
+Base command `/nemesisaddons`.
+
+| Command | Description | Permission |
+| --- | --- | --- |
+| `/nemesisaddons` | Show the command help. | `nemesis.admin` |
+| `/nemesisaddons <module>` | Open that module's settings GUI (must be enabled and have a GUI). | `nemesis.admin` |
+| `/nemesisaddons reload` | Reload the plugin and all module configs. | `nemesis.admin` |
+
+`<module>` is the module's config name (e.g. `chat`, `whitelist`, `client`).
+Modules without a GUI (`hider`, `redstone`, `login`) can only be changed from
+their config.
+
+The `login` and `register` commands are declared in `plugin.yml` (permission
+`nemesis.staff.login`); see the [login module](modules/login/README.md).
+
+## Global config (`config.yml`)
+
+| Key | Description |
+| --- | --- |
+| `license-key` | Your Lukittu license key (leave the placeholder for the build to inject). |
+| `bstats` | Send anonymous bStats metrics. |
+| `debug.storage` | Verbose storage logging. |
+| `modules.<name>` | Enable/disable each module (see the table below). |
+
+## Modules
+
+| Module | Toggle key | GUI | Commands | What it does |
+| --- | --- | --- | --- | --- |
+| [whitelist](modules/whitelist/README.md) | `whitelist` | ✅ | — | Custom whitelist with join-attempt alerts. |
+| [chat](modules/chat/README.md) | `chat` | ✅ | many | Chat filter, anti-spam, staff chat, mute, history. |
+| [commands](modules/commands/README.md) | `commands` | ✅ | `/spy`, `/commandshistory` | Command spy + per-player command logging. |
+| [client](modules/client/README.md) | `client` | ✅ | — | Client-brand detection / blacklist. |
+| [tracker](modules/tracker/README.md) | `tracker` | ✅ | `/track`, `/topdomains` | Track player IP / client / join domain. |
+| [suspicious](modules/suspicious/README.md) | `suspicious` | ✅ | — | Auto-act on unauthorized OP. |
+| [redstone](modules/redstone/README.md) | `redstone` | — | — | Redstone activation limiter (anti-lag). |
+| [limiter](modules/limiter/README.md) | `limiter` | ✅ | — | Per-area block limits (e.g. hoppers). |
+| [stacker](modules/stacker/README.md) | *(always on)* | ✅ | `/stack` | Entity stacking + chunk-stack. |
+| [restart](modules/restart/README.md) | `restart` | ✅ | `/schedulerestart`, `/automaticrestart` | Scheduled / automatic restarts. |
+| [shop](modules/shop/README.md) | `shop` | ✅ | `/shophistory` | Logs shop transactions. |
+| [inventory](modules/inventory/README.md) | `inventory` | ✅ | `/invsee`, `/endersee`, `/recover` | Inventory inspection & recovery. |
+| [disguise](modules/disguise/README.md) | `disguise` | ✅ | `/disguise`, `/undisguise` | Rename/disguise a player. |
+| [vanish](modules/vanish/README.md) | `vanish` | ✅ | `/vanish` | Staff vanish. |
+| [center](modules/center/README.md) | `center` | ✅ | `/center` | Center a player on a block. |
+| [login](modules/login/README.md) | `login` | — | `/login`, `/register` | Encrypted staff login/registration. |
+| [hider](modules/hider/README.md) | `hider` | — | — | Hide commands from players (WIP). |
+
+## Permissions (global)
+
+| Permission | Effect |
+| --- | --- |
+| `nemesis.admin` | The `/nemesisaddons` command. |
+| `nemesis.filter.bypass` | Bypass the chat filter (declared in `plugin.yml`). |
+
+Per-module permissions are listed in each module's README.
+
+## ⚠️ Unprotected commands
+
+A few commands ship with **no permission check** in the code — any player can run
+them. Gate them with a permissions plugin or treat them as bugs to fix:
+
+- `/viewinventory <player>` and `/viewenderchest <player>` (chat module) — view
+  anyone's inventory / ender chest.
+- `/automaticrestart …` (restart module) — view and **change** the restart timer.
+
+## Dependencies
+
+All soft-depends (the plugin runs without them): EconomyShopGUI(-Premium),
+ShopGUIPlus, DonutShop, PlaceholderAPI, WorldEdit/FastAsyncWorldEdit, WorldGuard,
+ServersNPC, FancyNpcs, GSit, LPC, LuckPerms. Bundled libraries: HikariCP, H2.
+Folia is supported.
