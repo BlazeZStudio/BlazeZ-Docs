@@ -1,5 +1,6 @@
 {
-  "name": "BlazeZ",
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "My Plugins",
   "theme": "maple",
   "colors": {
     "primary": "#a855f7",
@@ -15,6 +16,9 @@
   "fonts": {
     "family": "Inter"
   },
+  "layout": {
+    "contentWidth": "wide"
+  },
   "navigation": {
     "tabs": [
       {
@@ -22,11 +26,7 @@
         "groups": [
           {
             "group": "Nemesis",
-            "pages": ["nemesis-core"]
-          },
-          {
-            "group": "Nemesis",
-            "pages": ["nemesis-addons"]
+            "pages": ["nemesis-core", "nemesis-addons"]
           }
         ]
       }
