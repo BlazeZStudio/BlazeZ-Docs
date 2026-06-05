@@ -4,10 +4,17 @@
   "colors": {
     "primary": "#16a34a"
   },
-  "navigation": [
-    {
-      "group": "Nemesis",
-      "pages": ["nemesis-core"]
-    }
-  ]
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Nemesis",
+        "groups": [
+          {
+            "group": "Nemesis",
+            "pages": ["nemesis-core"]
+          }
+        ]
+      }
+    ]
+  }
 }
