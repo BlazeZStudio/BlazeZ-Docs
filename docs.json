@@ -29,6 +29,15 @@
             "pages": ["nemesis-core", "nemesis-addons"]
           }
         ]
+      },
+            {
+        "tab": "Order",
+        "groups": [
+          {
+            "group": "Order",
+            "pages": ["order"]
+          }
+        ]
       }
     ]
   }
