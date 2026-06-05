@@ -5,10 +5,6 @@
     {
       "group": "Nemesis",
       "pages": ["nemesis-core"]
-    },
-    {
-      "group": "Order",
-      "pages": ["order"]
     }
   ]
 }
