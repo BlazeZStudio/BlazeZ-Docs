@@ -1,0 +1,74 @@
+# Order
+
+A player order book: players post buy orders for items at a set price, and others
+fulfil them for the reward. Supports multiple economies, sign-based input (Java &
+Bedrock), shulker boxes, expiry, webhooks and chat announcements.
+
+## Commands
+
+All commands are player-only. `/order` and `/orders` are equivalent, as are
+`/order reload`/`/orders reload` and `/order import`/`/orders import`.
+
+| Command | Description | Permission |
+| --- | --- | --- |
+| `/order [filter]` | Open the order book (optionally pre-filtered). | — |
+| `/orders [filter]` | Same as `/order`. | — |
+| `/order leftovers` | Claim items left over from your orders. | `order.leftovers` |
+| `/orderhistory` | View your order history. | `orders.history` |
+| `/order admin` | Open the admin order menu. | `order.admin` |
+| `/order reload` / `/orders reload` | Reload the module config. | `orders.admin` |
+| `/order import <category>` / `/orders import <category> [mode]` | Import existing orders into `<category>`. | `orders.admin` |
+
+Extra aliases for the base command can be added under `command-aliases`.
+
+## Permissions
+
+| Permission | Grants |
+| --- | --- |
+| `order.leftovers` | `/order leftovers`. |
+| `orders.history` | `/orderhistory`. |
+| `order.admin` | `/order admin`. |
+| `orders.admin` | `reload` and `import`. |
+| `order.limit.<n>` | Order limit per player (when `limit-orders.enabled`). |
+
+## Files
+
+| File | Purpose |
+| --- | --- |
+| `config.yml` | Core settings. |
+| `inventories/*.yml` | All order menus. |
+| `items.yml` | Item definitions used by the menus. |
+| `texture_packs/` | Optional textured menu variants + install guide. |
+| `read-me.txt` | How to add player-head icons to any menu. |
+
+## config.yml
+
+| Key | Description |
+| --- | --- |
+| `webhook.*` | Discord webhook for created/completed/delivered/cancelled events. |
+| `world-blacklist` | Worlds where order commands are blocked. |
+| `priority-shop` | Preferred shop plugin (empty = none, `none` = disabled). |
+| `accept-formatted-sign` | Accept `10k`, `1m`, etc. in the price sign. |
+| `accept-shulker-boxes` | Allow shulker boxes in orders. |
+| `command-aliases` | Extra aliases for the order command. |
+| `limit-orders.enabled` | Limit orders per player via `order.limit.<n>`. |
+| `minimum-price-per-item` / `maximum-price-per-item` | Price bounds (`-1` = no max). |
+| `price-format-type` | `1` = `1,000`, `2` = `1k`. |
+| `lockdown-mode.enabled` | Disable all order features. |
+| `announce-orders` | Announce new orders in chat. |
+| `delivering-check-ignore-lore` | Ignore item lore when matching deliveries. |
+| `economies.*` | Vault and/or PlaceholderAPI economies, each with a format, icon and commands. |
+| `sign-texts.*` | Java/Bedrock sign prompts for search, amount and price. |
+| `expire-time-seconds` | Order lifetime (`604800` = 7 days). |
+| `sounds` | Sound effects. |
+| `debug` | Leave off unless asked by the developer. |
+
+## Messages
+
+`messages` and `action-bar` mirror each other. Placeholders: `%player%`,
+`%owner%`, `%item%`, `%amount%`, `%price%`.
+
+## Dependencies
+
+A supported shop plugin for `priority-shop`. PlaceholderAPI for the
+`placeholder-api` economies.
