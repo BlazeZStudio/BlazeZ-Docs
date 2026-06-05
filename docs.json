@@ -1,8 +1,19 @@
 {
-  "name": "My Plugins",
-  "theme": "mint",
+  "name": "BlazeZ",
+  "theme": "maple",
   "colors": {
-    "primary": "#16a34a"
+    "primary": "#a855f7",
+    "light": "#d8b4fe",
+    "dark": "#7e22ce"
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "fonts": {
+    "family": "Inter"
   },
   "navigation": {
     "tabs": [
@@ -12,6 +23,10 @@
           {
             "group": "Nemesis",
             "pages": ["nemesis-core"]
+          },
+          {
+            "group": "Nemesis",
+            "pages": ["nemesis-addons"]
           }
         ]
       }
